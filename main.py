@@ -1,5 +1,7 @@
 import market_data
 import sys
+
+from strategies.macd_cross_over import macd_cross_over
 from strategies.moving_average_cross_over import ma_price_cross_over, double_ma_cross_over
 from strategies.rsi_cross_over import rsi_middle_line_cross_over
 
@@ -19,6 +21,7 @@ if __name__ == '__main__':
     print("1. Moving Average Cross Over")
     print("2. Double Moving Averages Cross Over")
     print("3. RSI Cross Over")
+    print("4. MACD Cross Over")
     strategy = int(input())
     if strategy == 1:
         sma_period = int(input("Please enter the moving average period: "))
@@ -29,6 +32,10 @@ if __name__ == '__main__':
     elif strategy == 3:
         rsi_period = int(input("Please enter the RSI period: "))
         buy_signals, sell_signals = rsi_middle_line_cross_over(adj_prices, rsi_period)
+    elif strategy == 4:
+        fast_period, slow_period, signal_period = (
+            map(int, input("Please enter fast and slow moving average period and signal period: ").split(' ')))
+        buy_signals, sell_signals = macd_cross_over(adj_prices, fast_period, slow_period, signal_period)
     else:
         print("Please enter the correct number of strategy.")
 
