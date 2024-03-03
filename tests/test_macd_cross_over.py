@@ -1,6 +1,6 @@
 import random
 from strategies.macd_cross_over import macd_cross_over
-from strategies.moving_average_cross_over import double_ma_cross_over, double_ma_price_cross_over
+from strategies.mac import double_ma_cross_over, double_ma_price_cross_over
 from strategies.rsi_cross_over import rsi_middle_line_cross_over
 from unittest import TestCase
 
